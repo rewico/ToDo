@@ -11,9 +11,55 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/main.min.css" />
-    <title>Document</title>
+    <title>ToDo</title>
   </head>
   <body>
+    <section class="container">
+      <form class="d-flex w-50 mx-auto mt-5 mb-3">
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Type your todo..."
+          autofocus
+          id="js-input"
+        />
+        <button type="submit" id="addBtn">
+          <img src="images/png/check.png" width="32" />
+        </button>
+      </form>
+      <ul class="w-50 mx-auto border rounded bg-light" id="js-list">
+        <li class="p-2 d-flex align-items-center border-bottom">
+          <input
+            class="form-check-input me-1 p-0 m-0"
+            type="checkbox"
+            id="js-check"
+          />
+          <p class="me-1 p-0 m-0">Text</p>
+          <button class="btn btn-success ms-auto">Edit</button>
+          <button class="btn btn-danger ms-1">Del</button>
+        </li>
+        <li class="p-2 d-flex align-items-center border-bottom">
+          <input
+            class="form-check-input me-1 p-0 m-0"
+            type="checkbox"
+            id="js-check"
+          />
+          <p class="me-1 p-0 m-0">Text</p>
+          <button class="btn btn-success ms-auto">Edit</button>
+          <button class="btn btn-danger ms-1">Del</button>
+        </li>
+        <li class="p-2 d-flex align-items-center border-bottom">
+          <input
+            class="form-check-input me-1 p-0 m-0"
+            type="checkbox"
+            id="js-check"
+          />
+          <p class="me-1 p-0 m-0">Text</p>
+          <button class="btn btn-success ms-auto">Edit</button>
+          <button class="btn btn-danger ms-1">Del</button>
+        </li>
+      </ul>
+    </section>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
