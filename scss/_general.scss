@@ -1,14 +1,18 @@
 body {
   font-family: arial;
-  background: #70e1f5;
-  background: -webkit-linear-gradient(to right, #ffd194, #70e1f5);
-  background: linear-gradient(to right, #ffd194, #70e1f5);
+  // background: #70e1f5;
+  // background: -webkit-linear-gradient(to right, #ffd194, #70e1f5);
+  // background: linear-gradient(to right, #ffd194, #70e1f5);
+  background: #360033;
+  background: -webkit-linear-gradient(to right, #0b8793, #360033);
+  background: linear-gradient(to right, #0b8793, #360033);
 }
 
 ul {
   padding: 0;
   margin: 0;
   list-style: none;
+  border-color: #ffffff !important;
 }
 
 li:last-child {
@@ -29,17 +33,31 @@ p {
   margin: 0;
 }
 
+p {
+  color: hwb(0 100% 0%);
+}
+
 #js-input {
   background-color: #fbf7f3 !important;
 }
 
 #addBtn {
-  margin-left: -50px !important;
+  margin-left: -53px !important;
   padding: 2px 10px;
   border: none;
   background-color: transparent;
 }
 
 #js-list {
-  background-color: rgba(255, 251, 251, 0.9) !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.edit {
+  width: 24px;
+  height: 24px;
+}
+
+.trash {
+  width: 22px;
+  height: 22px;
 }
