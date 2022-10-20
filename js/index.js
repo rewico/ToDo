@@ -33,8 +33,8 @@ const renderLoop = (evt) => {
     elLi.classList = "p-2 d-flex align-items-center border-bottom px-3";
     elCheck.classList = "form-check-input me-1 p-0 m-0";
     elP.classList = "me-1 p-0 m-0";
-    elBtnEdit.classList = "btn btn-danger ms-auto";
-    elBtnDel.classList = "btn btn-success ms-1";
+    elBtnEdit.classList = "btn btn-success ms-auto";
+    elBtnDel.classList = "btn btn-danger ms-1";
     elImgEdit.classList = "edit";
     elImgTrash.classList = "trash";
 
@@ -42,11 +42,14 @@ const renderLoop = (evt) => {
     elImgEdit.src = "images/png/edit.png";
     elImgTrash.src = "images/png/trash.png";
 
-    // Textar
+    // Dataset
+    elLi.dataset.id = todo.id;
+
+    // Textlar
     elP.textContent = todo.title;
 
     // Types
-    elCheck.type = "checkbox"
+    elCheck.type = "checkbox";
 
     // Appendlar
     elBtnEdit.appendChild(elImgEdit);
@@ -63,8 +66,8 @@ const adder = (evt) => {
   // Yangi todo yaratish
   if (elInput.value.trim().length > 2) {
     let todo = {
-      id: 1,
-      title: elInput.value,
+      id: uuid.v4(),
+      title: elInput.value.trim(),
       isComp: false,
     };
 
@@ -77,7 +80,28 @@ const adder = (evt) => {
   }
 };
 
+const separate = (evt) => {
+  // Delete rasmga to'g'ri kelsa
+  if (evt.target.matches(".trash")) {
+    todos = JSON.parse(localStorage.getItem("todos")).filter(
+      (element) => element.id != evt.path[2].dataset.id
+    );
+    localStorage.setItem("todos", JSON.stringify(todos));
+    renderLoop(JSON.parse(localStorage.getItem("todos")));
+  }
+
+  // Delete btn ga to'g'ri kelsa
+  else if (evt.target.matches(".btn-danger")) {
+    todos = JSON.parse(localStorage.getItem("todos")).filter(
+      (element) => element.id != evt.path[1].dataset.id
+    );
+    localStorage.setItem("todos", JSON.stringify(todos));
+    renderLoop(JSON.parse(localStorage.getItem("todos")));
+  }
+};
+
 elInput.addEventListener("keyup", checkForValue);
 elForm.addEventListener("submit", adder);
+elUl.addEventListener("click", separate);
 
 renderLoop(todos);
