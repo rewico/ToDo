@@ -115,6 +115,7 @@ const separate = (evt) => {
         evt.target.matches(".modal-dialog") ||
         evt.target.matches(".btn-close")
       ) {
+        elBtnSave.setAttribute("disabled", "true");
         elDivModal.removeEventListener("click", modalSeperate);
       } else if (evt.target.matches("#saveBtn")) {
         if (elInputEdit.value.replace(/ /g, "").length > 2) {
