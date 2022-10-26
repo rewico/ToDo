@@ -2,6 +2,9 @@ const elForm = document.getElementById("js-form");
 const elInput = document.getElementById("js-input");
 const elBtnAdd = document.getElementById("addBtn");
 const elUl = document.getElementById("js-list");
+const elDivModal = document.getElementById("exampleModal");
+const elInputEdit = document.getElementById("newEdited");
+const elBtnSave = document.getElementById("saveBtn");
 
 // Bu yerda local storageda ma'lumot bo'lsa sh ma'lumotni parse qilib oladi, bo'lmasa bo'sh string
 let todos = localStorage.getItem("todos")
@@ -12,7 +15,7 @@ elBtnAdd.style.display = "none";
 
 // Input ichidagi ma'lumot talabga javob berishini tekshirish, listeneri pastroqda
 const checkForValue = (evt) => {
-  evt.target.value.trim().length > 2
+  evt.target.value.replace(/ /g, "").length > 2
     ? (elBtnAdd.style.display = "block")
     : (elBtnAdd.style.display = "none");
 };
@@ -44,12 +47,19 @@ const renderLoop = (evt) => {
 
     // Dataset
     elLi.dataset.id = todo.id;
+    elBtnEdit.dataset.bsToggle = "modal";
+    elBtnEdit.dataset.bsTarget = "#exampleModal";
 
     // Textlar
     elP.textContent = todo.title;
 
     // Types
     elCheck.type = "checkbox";
+
+    // Styles
+    if (todo.isComp) {
+      elP.classList.add("text-decoration-line-through");
+    }
 
     // Appendlar
     elBtnEdit.appendChild(elImgEdit);
@@ -64,7 +74,7 @@ const adder = (evt) => {
   evt.preventDefault();
 
   // Yangi todo yaratish
-  if (elInput.value.trim().length > 2) {
+  if (elInput.value.replace(/ /g, "").length > 2) {
     let todo = {
       id: uuid.v4(),
       title: elInput.value.trim(),
@@ -81,23 +91,52 @@ const adder = (evt) => {
 };
 
 const separate = (evt) => {
-  // Delete rasmga to'g'ri kelsa
-  if (evt.target.matches(".trash")) {
+  let forShort = evt.target;
+  // Delete
+  if (forShort.matches(".trash") || forShort.matches(".btn-danger")) {
     todos = JSON.parse(localStorage.getItem("todos")).filter(
-      (element) => element.id != evt.path[2].dataset.id
+      (element) => element.id != forShort.closest("li").dataset.id
     );
     localStorage.setItem("todos", JSON.stringify(todos));
     renderLoop(JSON.parse(localStorage.getItem("todos")));
   }
 
-  // Delete btn ga to'g'ri kelsa
-  else if (evt.target.matches(".btn-danger")) {
-    todos = JSON.parse(localStorage.getItem("todos")).filter(
-      (element) => element.id != evt.path[1].dataset.id
+  // Edit
+  else if (forShort.matches(".edit") || forShort.matches(".btn-success")) {
+    let foundItem = JSON.parse(localStorage.getItem("todos")).find(
+      (element) => element.id == forShort.closest("li").dataset.id
     );
-    localStorage.setItem("todos", JSON.stringify(todos));
-    renderLoop(JSON.parse(localStorage.getItem("todos")));
+    elInputEdit.value = foundItem.title;
+
+    const modalSeperate = (evt) => {
+      if (
+        evt.target.matches("#exampleModal") ||
+        evt.target.matches(".modal-dialog") ||
+        evt.target.matches(".btn-close")
+      ) {
+        elDivModal.removeEventListener("click", modalSeperate);
+      } else if (evt.target.matches("#saveBtn")) {
+        if (elInputEdit.value.replace(/ /g, "").length > 2) {
+          foundItem.title = elInputEdit.value;
+          todos.find((element) => element.id === foundItem.id).title =
+            foundItem.title;
+
+          localStorage.setItem("todos", JSON.stringify(todos));
+          renderLoop(JSON.parse(localStorage.getItem("todos")));
+          elDivModal.removeEventListener("click", modalSeperate);
+        }
+      }
+      elInputEdit.addEventListener("keyup", (evt) => {
+        if (evt.target.value.replace(/ /g, "").length > 2) {
+          elBtnSave.removeAttribute("disabled");
+        } else elBtnSave.setAttribute("disabled", "true");
+      });
+    };
+
+    elDivModal.addEventListener("click", modalSeperate);
   }
+
+  // CheckMark
 };
 
 elInput.addEventListener("keyup", checkForValue);

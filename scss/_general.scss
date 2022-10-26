@@ -66,3 +66,10 @@ p {
   width: 22px;
   height: 22px;
 }
+
+.myModal {
+  top: 50vh;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  background: #1d7395;
+}
