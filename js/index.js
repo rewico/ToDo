@@ -125,6 +125,7 @@ const separate = (evt) => {
           localStorage.setItem("todos", JSON.stringify(todos));
           renderLoop(JSON.parse(localStorage.getItem("todos")));
           elDivModal.removeEventListener("click", modalSeperate);
+          elBtnSave.setAttribute("disabled", "true");
         }
       }
       elInputEdit.addEventListener("keyup", (evt) => {
