@@ -59,6 +59,7 @@ const renderLoop = (evt) => {
     // Styles
     if (todo.isComp) {
       elP.classList.add("text-decoration-line-through");
+      elCheck.checked = "true";
     }
 
     // Appendlar
@@ -137,6 +138,15 @@ const separate = (evt) => {
   }
 
   // CheckMark
+  else if (forShort.matches(".form-check-input")) {
+    let checkedItem = JSON.parse(localStorage.getItem("todos")).find(
+      (element) => element.id === forShort.closest("li").dataset.id
+    );
+    todos.find((element) => element.id === checkedItem.id).isComp =
+      !checkedItem.isComp;
+    localStorage.setItem("todos", JSON.stringify(todos));
+    renderLoop(JSON.parse(localStorage.getItem("todos")));
+  }
 };
 
 elInput.addEventListener("keyup", checkForValue);
