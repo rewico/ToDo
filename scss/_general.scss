@@ -1,11 +1,9 @@
 body {
   font-family: arial;
-  // background: #70e1f5;
-  // background: -webkit-linear-gradient(to right, #ffd194, #70e1f5);
-  // background: linear-gradient(to right, #ffd194, #70e1f5);
-  background: #360033;
-  background: -webkit-linear-gradient(to right, #0b8793, #360033);
-  background: linear-gradient(to right, #0b8793, #360033);
+  background: #2c0029;
+  background: -webkit-linear-gradient(to right, #085f67, #2c0029);
+  background: linear-gradient(to right, #085f67, #2c0029);
+  color: #e2e2e2;
 }
 
 ul {
@@ -33,10 +31,6 @@ p {
   margin: 0;
 }
 
-p {
-  color: hwb(0 100% 0%);
-}
-
 #js-input {
   background-color: #fbf7f3 !important;
 }
@@ -49,7 +43,7 @@ p {
   display: none;
 }
 
-#js-list {
+.js-list {
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
 

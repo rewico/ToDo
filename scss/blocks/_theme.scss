@@ -1,0 +1,59 @@
+.mini {
+  position: fixed;
+  bottom: 50px;
+  right: 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.clear,
+.theme {
+  background: none;
+  padding: 7px;
+  border-radius: 25%;
+  border: none;
+  outline: none;
+  width: 50px;
+  height: 46px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.clear {
+  background: #660f07;
+}
+
+.theme {
+  margin-top: 10px;
+  background: rgb(255, 255, 240);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sun {
+  -webkit-filter: drop-shadow(2px 0px 8px #ff0);
+  filter: drop-shadow(2px 0px 8px #ff0);
+}
+
+.moon {
+  -webkit-filter: drop-shadow(2px 0px 8px #fff);
+  filter: drop-shadow(2px 0px 8px #fff);
+}
+
+.btnLight {
+  background: #360033;
+  background: -webkit-linear-gradient(to right, #0b8793, #360033);
+  background: linear-gradient(to right, #0b8793, #360033);
+}
+
+.thLight {
+  background: rgb(255, 255, 240);
+  color: #000;
+}
+
+.ulLight {
+  background-color: rgb(255, 240, 219) !important;
+}

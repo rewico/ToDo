@@ -1,10 +1,11 @@
 const elForm = document.getElementById("js-form");
 const elInput = document.getElementById("js-input");
 const elBtnAdd = document.getElementById("addBtn");
-const elUl = document.getElementById("js-list");
+const elUl = document.querySelector(".js-list");
 const elDivModal = document.getElementById("exampleModal");
 const elInputEdit = document.getElementById("newEdited");
 const elBtnSave = document.getElementById("saveBtn");
+const elBtnClear = document.querySelector(".clear");
 
 // Bu yerda local storageda ma'lumot bo'lsa sh ma'lumotni parse qilib oladi, bo'lmasa bo'sh string
 let todos = localStorage.getItem("todos")
@@ -151,8 +152,15 @@ const separate = (evt) => {
   }
 };
 
+const clear = () => {
+  localStorage.removeItem("todos");
+  todos = [];
+  renderLoop(todos);
+};
+
 elInput.addEventListener("keyup", checkForValue);
 elForm.addEventListener("submit", adder);
 elUl.addEventListener("click", separate);
+elBtnClear.addEventListener("click", clear);
 
 renderLoop(todos);
