@@ -34,7 +34,7 @@ const renderLoop = (evt) => {
     let elImgTrash = document.createElement("img");
 
     // Classlar
-    elLi.classList = "p-2 d-flex align-items-center border-bottom px-3";
+    elLi.classList = "p-2 d-flex align-items-center border-bottom px-3 itemLi";
     elCheck.classList = "form-check-input me-1 p-0 m-0";
     elP.classList = "me-1 p-0 m-0";
     elBtnEdit.classList = "btn btn-success ms-auto";

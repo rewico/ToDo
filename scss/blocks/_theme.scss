@@ -15,6 +15,9 @@
   outline: none;
   width: 50px;
   height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     opacity: 0.8;
@@ -28,9 +31,6 @@
 .theme {
   margin-top: 10px;
   background: rgb(255, 255, 240);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .sun {
@@ -56,4 +56,107 @@
 
 .ulLight {
   background-color: rgb(255, 240, 219) !important;
+}
+
+@media only screen and(max-width: 769px) {
+  #js-form,
+  .js-list {
+    width: 75% !important;
+  }
+
+  .mini {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+@media only screen and(max-width: 565px) {
+  .broom {
+    width: 24px;
+    height: 24px;
+  }
+
+  .sun {
+    width: 32px;
+    height: 32px;
+  }
+
+  .moon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .clear,
+  .theme {
+    width: 42px;
+    height: 40px;
+  }
+
+  .btn-success,
+  .btn-danger {
+    width: 40px !important;
+    height: 35px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .edit,
+  .trash {
+    width: 22px !important;
+    height: 20px !important;
+  }
+}
+
+@media only screen and(max-width: 440px) {
+  .itemLi {
+    padding: 5px 6px !important;
+  }
+
+  .edit,
+  .trash {
+    width: 16px !important;
+    height: 14px !important;
+  }
+
+  .btn-success,
+  .btn-danger {
+    width: 30px !important;
+    height: 24px !important;
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .form-check-input {
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .clear,
+  .theme {
+    width: 30px;
+    height: 28px;
+  }
+
+  .broom {
+    width: 18px;
+    height: 18px;
+  }
+
+  .sun {
+    width: 24px;
+    height: 24px;
+  }
+
+  .moon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .mini {
+    bottom: 12px;
+    right: 12px;
+  }
 }
