@@ -50,12 +50,16 @@
 }
 
 .thLight {
-  background: rgb(255, 255, 240);
+  background: #fffff0;
   color: #000;
 }
 
 .ulLight {
-  background-color: rgb(255, 240, 219) !important;
+  background-color: #fff0db !important;
+}
+
+.modalBg {
+  background: #feffd8;
 }
 
 @media only screen and(max-width: 769px) {

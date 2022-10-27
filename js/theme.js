@@ -1,6 +1,7 @@
 const elBtnTheme = document.querySelector(".theme");
 const moon = document.querySelector(".moon");
 const sun = document.querySelector(".sun");
+const elModalContent = document.querySelector(".myModal");
 
 if (!localStorage.getItem("theme")) {
   localStorage.setItem("theme", "dark");
@@ -13,12 +14,14 @@ const themeSetter = (evt) => {
     sun.style.display = "none";
     moon.style.display = "block";
     elBtnTheme.classList.add("btnLight");
+    elModalContent.classList.add("modalBg");
   } else if (evt === "dark") {
     document.body.classList.remove("thLight");
     elUl.classList.remove("ulLight");
     sun.style.display = "block";
     moon.style.display = "none";
     elBtnTheme.classList.remove("btnLight");
+    elModalContent.classList.remove("modalBg");
   }
 };
 
