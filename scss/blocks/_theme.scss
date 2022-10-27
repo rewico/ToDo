@@ -109,6 +109,11 @@
 }
 
 @media only screen and(max-width: 440px) {
+  #js-form,
+  .js-list {
+    width: 80% !important;
+  }
+
   .itemLi {
     padding: 5px 6px !important;
   }
@@ -136,8 +141,12 @@
 
   .clear,
   .theme {
-    width: 30px;
-    height: 28px;
+    width: 35px;
+    height: 33px;
+  }
+
+  .theme {
+    margin-top: 5px;
   }
 
   .broom {
@@ -156,7 +165,7 @@
   }
 
   .mini {
-    bottom: 12px;
-    right: 12px;
+    bottom: 20px;
+    right: 8px;
   }
 }
