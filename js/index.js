@@ -153,9 +153,11 @@ const separate = (evt) => {
 };
 
 const clear = () => {
-  localStorage.removeItem("todos");
-  todos = [];
-  renderLoop(todos);
+  if (confirm("Are you sure to delete all your todos?") == true) {
+    localStorage.removeItem("todos");
+    todos = [];
+    renderLoop(todos);
+  }
 };
 
 elInput.addEventListener("keyup", checkForValue);
