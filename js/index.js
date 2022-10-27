@@ -153,10 +153,12 @@ const separate = (evt) => {
 };
 
 const clear = () => {
-  if (confirm("Are you sure to delete all your todos?") == true) {
-    localStorage.removeItem("todos");
-    todos = [];
-    renderLoop(todos);
+  if (JSON?.parse(localStorage?.getItem("todos"))?.length > 0) {
+    if (confirm("Are you sure to delete all your todos?") == true) {
+      localStorage.removeItem("todos");
+      todos = [];
+      renderLoop(todos);
+    }
   }
 };
 
