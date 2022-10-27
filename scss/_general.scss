@@ -18,6 +18,12 @@ li:last-child {
   border: none !important;
 }
 
+p {
+  white-space: nowrap;
+  width: 68%;
+  overflow: scroll;
+}
+
 a {
   text-decoration: none;
 }
@@ -71,4 +77,5 @@ p {
 
 ::-webkit-scrollbar {
   width: 0px;
+  height: 0;
 }
