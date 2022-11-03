@@ -96,11 +96,13 @@ const separate = (evt) => {
   let forShort = evt.target;
   // Delete
   if (forShort.matches(".trash") || forShort.matches(".btn-danger")) {
-    todos = JSON.parse(localStorage.getItem("todos")).filter(
-      (element) => element.id != forShort.closest("li").dataset.id
-    );
-    localStorage.setItem("todos", JSON.stringify(todos));
-    renderLoop(JSON.parse(localStorage.getItem("todos")));
+    if (confirm("Are you sure to delete this todo?") == true) {
+      todos = JSON.parse(localStorage.getItem("todos")).filter(
+        (element) => element.id != forShort.closest("li").dataset.id
+      );
+      localStorage.setItem("todos", JSON.stringify(todos));
+      renderLoop(JSON.parse(localStorage.getItem("todos")));
+    }
   }
 
   // Edit
